@@ -14,6 +14,11 @@
 
 ## About
 
+### TO DO
+- [ ] Fix details handler line:74 in PostControl
+- [ ] Vote up/down functionality
+- [ ] Check if edit/delete working
+
 **Inspired by sites like Reddit and HackerNews, this web application is a discussion forum that allows users to post news, pictures and other info around a certain topic.** Other users can then upvote or downvote content. The more upvotes an item receives, the higher it's displayed on the list.
 
 ## User Stories

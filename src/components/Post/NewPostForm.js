@@ -22,6 +22,8 @@ function NewPostForm (props){
     });
   }
 
+  const defaultNoImage = "https://webstore.iea.org/content/images/thumbs/default-image_450.png";
+
   return(
     <React.Fragment>
       <p>New Post Form</p>
@@ -61,6 +63,7 @@ function NewPostForm (props){
               type="text"
               name="imageURL"
               placeholder="http://www.image.com/cats.jpeg"
+              defaultValue={defaultNoImage}
             />
           </label>
         </div>
@@ -73,6 +76,7 @@ function NewPostForm (props){
               type="text"
               name="username"
               placeholder="caturday16"
+              required
             />
           </label>
         </div>
@@ -81,9 +85,22 @@ function NewPostForm (props){
             className="form-control"
             type="hidden"
             name="timestamp"
-            value={Date.now()}
+            value={Date().toString()}
+          />
+          <input
+            className="form-control"
+            type="hidden"
+            name="upVotes"
+            value={0}
+          />
+          <input
+            className="form-control"
+            type="hidden"
+            name="downVotes"
+            value={0}
           />
         </div>
+        <button className="btn btn-primary" type="submit">Add Post</button>
       </form>
     </React.Fragment>
   )

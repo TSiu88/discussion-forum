@@ -71,11 +71,12 @@ class PostControl extends React.Component {
     dispatch(action2);
   }
 
+  // TODO: FIX handler below returns selectedPost = null
   handleChangingSelectedPost = (id) => {
-    console.log("id", id);
+    console.log("handler reached! id =", id);
     const {dispatch} = this.props;
     const action = {
-      type: 'POST_DETAILS',
+      type: "POST_DETAILS",
       id: id
     }
     dispatch(action);
@@ -142,6 +143,7 @@ class PostControl extends React.Component {
   }  
 
   setVisibility = () => {
+    console.log("setVisibility reached! props =", this.props);
     if (this.props.editPostFormVisible){
       return {
         component: (
@@ -153,7 +155,7 @@ class PostControl extends React.Component {
         buttonText: "Cancel and return to forum"
       }
     } else if (this.props.selectedPost != null){
-      console.log("selected post reached!");
+      console.log("selected post reached!", this.props.selectedPost);
       return {
         component: (
           <PostDetails
@@ -193,6 +195,7 @@ class PostControl extends React.Component {
   render() {
 
     let currentlyVisibleState = this.setVisibility();
+    console.log("rerendered! props = ", this.props);
 
     return(
       <React.Fragment>

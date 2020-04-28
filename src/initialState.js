@@ -6,12 +6,12 @@ const thirdId = v4();
 const fourthId = v4();
 const fifthId = v4();
 const sixthId = v4();
-const firstTimeStamp = new Date();
-const secondTimeStamp = new Date();
-const thirdTimeStamp = new Date();
-const fourthTimeStamp = new Date();
-const fifthTimeStamp = new Date();
-const sixthTimeStamp = new Date();
+const firstTimeStamp = new Date(2020, 3, 22, 10, 33);
+const secondTimeStamp = new Date(2020, 4, 21, 15, 9);
+const thirdTimeStamp = new Date(2020, 4, 15, 18, 32);
+const fourthTimeStamp = new Date(2020, 4, 11, 9, 21);
+const fifthTimeStamp = new Date(2020, 4, 27, 3, 19);
+const sixthTimeStamp = new Date(2020, 4, 7, 19, 45);
 
 export default {
   masterPostList: {

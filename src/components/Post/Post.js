@@ -22,7 +22,7 @@ function Post(props){
     <React.Fragment>
       <div onClick={() => props.whenPostClicked(props.id)} className="post-card" style={cardStyle}>
         <p>{props.timestamp.toString()}</p>
-        <img src={props.imageURL} alt="posted" style={imageStyle}/>
+        <img src={props.imageURL} alt="posted-pic here" style={imageStyle}/>
         <h4><strong>{props.title}</strong></h4>
         <p>{props.postText}</p>
         <p><em>{props.username}</em></p>
