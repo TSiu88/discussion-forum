@@ -1,10 +1,10 @@
 import React from 'react';
 
-function PostDetail(){
+function PostDetails(){
   return(
     <React.Fragment>
     </React.Fragment>
   )
 };
 
-export default PostDetail;
+export default PostDetails;

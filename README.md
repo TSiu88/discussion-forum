@@ -54,6 +54,9 @@ No known bugs at this time.
 * CSS
 * JavaScript
 * React
+* Redux
+* Jest
+* Babel
 * Draw.io
 * Markdown
 * _npm*_
