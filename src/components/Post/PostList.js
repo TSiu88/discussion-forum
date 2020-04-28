@@ -14,6 +14,9 @@ function PostList(props){
       <div style={listStyle}>        
         {Object.values(props.postList).map((post) => (
           <Post
+            whenPostClicked={props.onPostSelect}
+            whenUpvoteClicked = {props.upVoteIncreased}
+            whenDownvoteClicked = {props.downVoteIncreased}
             title={post.title}
             postText={post.postText}
             timestamp={post.timestamp}
@@ -32,6 +35,8 @@ function PostList(props){
 
 PostList.propTypes = {
   postList: PropTypes.object,
+  upVoteIncreased: PropTypes.func,
+  downVoteIncreased: PropTypes.func,
 };
 
 export default PostList;

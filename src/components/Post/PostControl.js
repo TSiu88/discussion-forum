@@ -6,23 +6,47 @@ import EditPostForm from './EditPostForm';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-class PostControl extends React.Component{
+class PostControl extends React.Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
   }
 
-  handleToggleNewPostForm = () =>{
-    if (this.props.selectedPost != null){
-      const {dispatch} = this.props;
-      const action = {
+  handleDefaultView = () =>{
+    const {dispatch} = this.props;
+    if (this.props.selectedPost != null) {
+      const action1 = {
         type: 'POST_DETAILS'
       }
-      dispatch(action);
+      dispatch(action1); // selectedPost = null
+    }
+    if (this.props.editPostFormVisible) {
       const action2 = {
         type: 'TOGGLE_EDIT_POST_FORM'
       }
-      dispatch(action2);
+      dispatch(action2); // editPostFormVisible = false
+    }
+    if (this.props.newPostFormVisible) {
+      const action3 = {
+        type: 'TOGGLE_NEW_POST_FORM'
+      }
+      dispatch(action3); // newPostFormVisible = false
+    }
+  }
+
+  handleToggleNewPostForm = () =>{
+    const {dispatch} = this.props;
+    if (this.props.selectedPost != null){
+      const action = {
+        type: 'POST_DETAILS'
+      }
+      dispatch(action); // selectedPost = null
+    }
+    else {
+      const action2 = {
+        type: 'TOGGLE_NEW_POST_FORM'
+      }
+      dispatch(action2); // newPostFormVisible = true
     }
   }
 
@@ -48,15 +72,16 @@ class PostControl extends React.Component{
   }
 
   handleChangingSelectedPost = (id) => {
+    console.log("id", id);
     const {dispatch} = this.props;
-    const selectedPost = this.props.masterPostList[id];
     const action = {
-      type: 'POST_DETAILS'
+      type: 'POST_DETAILS',
+      id: id
     }
     dispatch(action);
   }
 
-  handleEditClick = () => {
+  handleDisplayEditClick = () => {
     const {dispatch} = this.props;
     const action = {
       type: 'TOGGLE_NEW_EDIT_FORM'
@@ -98,6 +123,24 @@ class PostControl extends React.Component{
     dispatch(action2);
   }
 
+  handleUpVoteInPost = (post) => {
+    const {dispatch} = this.props;
+    const {id, title, postText, timestamp, imageURL, username, upVotes, downVotes} = post;
+    const action = {
+      type: 'UPVOTE_POST',
+    }
+    dispatch(action);
+  }
+
+  handleDownVoteInPost = (post) => {
+    const {dispatch} = this.props;
+    const {id, title, postText, timestamp, imageURL, username, upVotes, downVotes} = post;
+    const action = {
+      type: 'DOWNVOTE_POST',
+    }
+    dispatch(action);
+  }  
+
   setVisibility = () => {
     if (this.props.editPostFormVisible){
       return {
@@ -110,12 +153,13 @@ class PostControl extends React.Component{
         buttonText: "Cancel and return to forum"
       }
     } else if (this.props.selectedPost != null){
+      console.log("selected post reached!");
       return {
         component: (
           <PostDetails
           post = {this.props.selectedPost}
           onClickingDelete = {this.handleDeletingPost}
-          onCLickingEdit = {this.handleEditClick}
+          onCLickingEdit = {this.handleDisplayEditClick}
           />
         ),
         buttonText: "Return to forum"
@@ -135,18 +179,23 @@ class PostControl extends React.Component{
           <PostList
             postList = {this.props.masterPostList}
             onPostSelect = {this.handleChangingSelectedPost}
+            upVoteIncreased = {this.handleUpVoteInPost}
+            downVoteIncreased = {this.handleDownVoteInPost}
           />
         ),
-        buttonText: "Return to forum" ,   
+        buttonText: "Add new post" ,   
       };
     }
   }
 
-  render(){
-    const currentlyVisibleState = this.setVisibility();
+
+  
+  render() {
+
+    let currentlyVisibleState = this.setVisibility();
+
     return(
       <React.Fragment>
-        <h1>This is post control.</h1>
         <button
           onClick={this.handleToggleNewPostForm}
         >{currentlyVisibleState.buttonText}

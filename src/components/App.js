@@ -12,23 +12,33 @@ class App extends React.Component {
     super(props);
   }
 
-  handleDisplayDefaultView = () => {
-    const { dispatch } = this.props;
-    const action1 = {
-      type: 'POST_DETAILS'
+  handleDefaultView = () =>{
+    const {dispatch} = this.props;
+    if (this.props.selectedPost != null) {
+      const action1 = {
+        type: 'POST_DETAILS'
+      }
+      dispatch(action1); // selectedPost = null
     }
-    dispatch(action1);
-    // TODO:
-    // selectedTicket to null
-      // expect(selectedPostReducer({}, { type: null })).toEqual(null);
-    // newform and editformVisible to false
-    // display list
+    if (this.props.editPostFormVisible) {
+      const action2 = {
+        type: 'TOGGLE_EDIT_POST_FORM'
+      }
+      dispatch(action2); // editPostFormVisible = false
+    }
+    if (this.props.newPostFormVisible) {
+      const action3 = {
+        type: 'TOGGLE_NEW_POST_FORM'
+      }
+      dispatch(action3); // newPostFormVisible = false
+    }
   }
 
   render() {
+    console.log("PROPS IN APP", this.props);
     return (
       <React.Fragment>
-        <Header whenHeaderClicked={this.handleDisplayDefaultView} />
+        <Header whenHeaderClicked={this.handleDefaultView} />
         <PostControl/>
         <Footer/>
       </React.Fragment>

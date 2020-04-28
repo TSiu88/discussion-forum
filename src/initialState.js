@@ -4,10 +4,14 @@ const firstId = v4();
 const secondId = v4();
 const thirdId = v4();
 const fourthId = v4();
+const fifthId = v4();
+const sixthId = v4();
 const firstTimeStamp = new Date();
 const secondTimeStamp = new Date();
 const thirdTimeStamp = new Date();
 const fourthTimeStamp = new Date();
+const fifthTimeStamp = new Date();
+const sixthTimeStamp = new Date();
 
 export default {
   masterPostList: {
@@ -50,6 +54,26 @@ export default {
       username: "hoppityhop",
       upVotes: 160,
       downVotes: 12
+    },
+    [fifthId]: {
+      id: fifthId,
+      title: "The cutest",
+      postText: "Fits in the palm of your hand",
+      timestamp: fifthTimeStamp,
+      imageURL: "https://i.redd.it/5w6a769fnmr31.jpg",
+      username: "hoppityhop",
+      upVotes: 243,
+      downVotes: 8
+    },
+    [sixthId]: {
+      id: sixthId,
+      title: "Liquid cat is liquid",
+      postText: "If they fits, they sits",
+      timestamp: sixthTimeStamp,
+      imageURL: "https://justsomething.co/wp-content/uploads/2014/01/cats-are-liquid-11.jpg",
+      username: "longCatIsLong",
+      upVotes: 383,
+      downVotes: 27
     },
   },
   newPostFormVisible: false,

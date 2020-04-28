@@ -12,6 +12,8 @@ const store = createStore(rootReducer, initialState, window.__REDUX_DEVTOOLS_EXT
 
 store.subscribe(() => console.log(store.getState()));
 
+console.log("STORE IN INDEX", store.getState());
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
